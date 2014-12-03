@@ -1267,7 +1267,7 @@ class BoostrapShortcodes {
       "data"   => false
 	), $atts );
       
-    $class = 'panel-group';
+    $class = 'panel-group collapsibles';
     $class .= ( $atts['xclass'] )   ? ' ' . $atts['xclass'] : '';
       
     $id = 'custom-collapse-'. $GLOBALS['collapsibles_count'];
