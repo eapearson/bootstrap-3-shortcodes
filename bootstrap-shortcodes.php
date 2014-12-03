@@ -119,6 +119,8 @@ class BoostrapShortcodes {
       'thumbnail', 
       'tooltip', 
       'well', 
+      'callout',
+      'contextual-background'
     );
 
     foreach ( $shortcodes as $shortcode ) {
@@ -1906,6 +1908,53 @@ function bs_popover( $atts, $content = null ) {
       esc_attr( $class ),
       ( $data_props ) ? ' ' . $data_props : '',
       do_shortcode( $content )
+    );
+  }
+  
+  /*--------------------------------------------------------------------------------------
+    *
+    * bs_callout
+    *
+    * @author Erik Pearson
+    * @since 3.3.4
+    *
+    *-------------------------------------------------------------------------------------*/
+  function bs_callout ($atts, $content = null) {
+    $attribs = shortcode_atts([
+      'xclass' => false,
+      'type' => false,
+      'title' => false
+    ], $atts);
+    $class = 'bs-callout';
+    $class .= ($attribs['xclass']) ? ' ' . $attribs['xclass'] : '';
+    $class .= ($attribs['type']) ? ' bs-callout-' . $attribs['type'] : ' bs-callout-default';
+    
+    return sprintf(
+     '<div class="%s""><h4>%s</h4>%s</div>',
+     esc_attr($class),
+     esc_html($attribs['title']),
+     do_shortcode($content));
+  }
+  
+   /*--------------------------------------------------------------------------------------
+    *
+    * bs_contextual_background
+    *
+    * @author Erik Pearson
+    * @since 3.3.4
+    *
+    *-------------------------------------------------------------------------------------*/
+  function bs_contextual_background($atts, $content = null) {
+    extract( shortcode_atts([
+      'xclass' => false,
+      'type' => 'default',
+      'tag' => 'p'
+    ], $atts));
+      $class = 'bg-' . $attribs['type'];
+      $class .= ($attribs['xclass']) ? ' ' . $attribs['xclass'] : '';
+      return sprintf(
+      '<%s class="%s">%s</%s>',
+      $tag, esc_attr($class), do_shortcode($content), $tag
     );
   }
   
