@@ -1441,7 +1441,8 @@ class BoostrapShortcodes {
     
     $data_props = $this->parse_data_attributes( $atts['data'] );
 
-    $content = preg_replace('/class=".*?"/', '', $content);
+    // wtf?
+    // $content = preg_replace('/class=".*?"/', '', $content);
 
     return sprintf( 
       '<div class="%s"%s>%s%s</div>',
