@@ -106,6 +106,7 @@ class BoostrapShortcodes {
       'nav-item', 
       'page-header', 
       'panel', 
+      'panel-footer',
       'popover', 
       'progress', 
       'progress-bar', 
@@ -1132,6 +1133,34 @@ class BoostrapShortcodes {
       $heading,
       do_shortcode( $content ),
       ( $footer ) ? ' ' . $footer : ''
+    );
+  }
+  
+  /*--------------------------------------------------------------------------------------
+    *
+    * bs_tabs
+    *
+    * @author Erik Pearson
+    * @since 1.0
+    * Need footer as separate shortcode
+    *-------------------------------------------------------------------------------------*/
+  function bs_panel_footer( $atts, $content = null ) {
+
+	$atts = shortcode_atts( array(
+      "xclass" => false,
+      "data"   => false,
+	), $atts );
+
+    $class  = 'panel-footer';
+    $class .= ( $atts['xclass'] ) ? ' ' . $atts['xclass'] : '';    
+
+    $data_props = $this->parse_data_attributes( $atts['data'] );
+
+    return sprintf(
+      '<div class="%s"%s>%s</div>',
+      esc_attr( $class ),
+      ( $data_props ) ? ' ' . $data_props : '',
+      do_shortcode( $content )
     );
   }
 
