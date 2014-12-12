@@ -1960,7 +1960,7 @@ function bs_popover( $atts, $content = null ) {
     $class .= ($attribs['type']) ? ' bs-callout-' . $attribs['type'] : ' bs-callout-default';
     
     return sprintf(
-     '<div class="%s""><h4>%s</h4>%s</div>',
+     '<div class="%s"><h4>%s</h4>%s</div>',
      esc_attr($class),
      esc_html($attribs['title']),
      do_shortcode($content));
